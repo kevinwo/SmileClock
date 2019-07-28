@@ -15,7 +15,7 @@ import UIKit
 
 public class SmileWorldClockModel: NSObject, NSCoding {
     //MARK: ==
-    public override func isEqual(object: AnyObject?) -> Bool {
+    public override func isEqual(_ object: Any?) -> Bool {
         if let rhs = object as? SmileWorldClockModel {
             return selectedTimeZones == rhs.selectedTimeZones
         }
@@ -23,7 +23,7 @@ public class SmileWorldClockModel: NSObject, NSCoding {
     }
     
     //MARK: Property
-    var timer: NSTimer?
+    var timer: Timer?
     public var selectedTimeZones = [SmileTimeZoneData]()
     var delegate: SmileWorldClockModelDelegate!
     
@@ -39,14 +39,14 @@ public class SmileWorldClockModel: NSObject, NSCoding {
     
     //MARK: NSCoding
     required public init?(coder aDecoder: NSCoder) {
-        if let data = aDecoder.decodeObjectForKey("selectedTimeZones") as? [SmileTimeZoneData] {
+        if let data = aDecoder.decodeObject(forKey: "selectedTimeZones") as? [SmileTimeZoneData] {
             selectedTimeZones = data
         }
         super.init()
     }
     
-    public func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(selectedTimeZones, forKey: "selectedTimeZones")
+    public func encode(with aCoder: NSCoder) {
+        aCoder.encode(selectedTimeZones, forKey: "selectedTimeZones")
     }
     
     //MARK: Timer
@@ -58,11 +58,11 @@ public class SmileWorldClockModel: NSObject, NSCoding {
     }
     
     func startTimer() {
-        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "fireTimer", userInfo: nil, repeats: true)
-        NSRunLoop.mainRunLoop().addTimer(timer!, forMode: NSRunLoopCommonModes)
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
+        RunLoop.main.add(timer!, forMode: .common)
     }
     
-    func fireTimer() {
+    @objc func fireTimer() {
         if selectedTimeZones.count > 0 {
             for timeZoneData in selectedTimeZones {
                 timeZoneData.updateTime()

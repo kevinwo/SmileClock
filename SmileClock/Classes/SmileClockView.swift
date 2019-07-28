@@ -26,7 +26,7 @@ public class SmileClockView: UIView {
     
     //MARK: constants
     var bgLineWidth: CGFloat = 0.0
-    var circleCenter: CGPoint = CGPointZero
+    var circleCenter: CGPoint = .zero
     var circleRadius: CGFloat = 0.0
     var hourHandWidth: CGFloat = 0.0
     var minHandWidth: CGFloat = 0.0
@@ -41,8 +41,8 @@ public class SmileClockView: UIView {
     var graduationFontSize: CGFloat = 0.0
     
     func getDiameter() -> CGFloat {
-        let width = CGRectGetWidth(self.bounds)
-        let height = CGRectGetHeight(self.bounds)
+        let width = self.bounds.width
+        let height = self.bounds.height
         return min(width, height)
     }
     
@@ -86,11 +86,11 @@ public class SmileClockView: UIView {
     var fontView: UIView = UIView()
     
     //MARK: Customize UI Key Properties
-    var bgColor: UIColor = UIColor.purpleColor()
-    var graduationColor: UIColor = UIColor.blackColor()
-    var fontColor: UIColor = UIColor.purpleColor()
-    var handColor: UIColor = UIColor.redColor()
-    var secHandColor: UIColor = UIColor.purpleColor()
+    var bgColor: UIColor = .purple
+    var graduationColor: UIColor = .black
+    var fontColor: UIColor = .purple
+    var handColor: UIColor = .red
+    var secHandColor: UIColor = .purple
     public var clockStyle: ClockStyle = .minimal
     
     //MARK: Init
@@ -104,7 +104,7 @@ public class SmileClockView: UIView {
         super.init(coder: aDecoder)
     }
     
-    public override func drawRect(rect: CGRect) {
+    public override func draw(_ rect: CGRect) {
         if bgImage != nil {
             return
         }
@@ -126,112 +126,112 @@ public class SmileClockView: UIView {
     func updateSecondLayer() {
         let keyPath = "transform"
         let duration = 1.0
-        let angle_pre: CGFloat = degreeFromMinutes(second)
-        let angle: CGFloat = degreeFromMinutes(Int(duration))
+        let angle_pre: CGFloat = degreeFromMinutes(minutes: second)
+        let angle: CGFloat = degreeFromMinutes(minutes: Int(duration))
         let fromValueCA = CATransform3DRotate(CATransform3DIdentity, angle_pre, 0, 0, 1)
         let toValueCA = CATransform3DRotate(fromValueCA, angle, 0, 0, 1)
         
         let animation = CABasicAnimation(keyPath: keyPath)
         
         #if TARGET_INTERFACE_BUILDER
-            secHandLayer.transform = fromValueCA
+        secHandLayer.transform = fromValueCA
         #else
-            animation.fromValue = NSValue(CATransform3D: fromValueCA)
-            animation.toValue = NSValue(CATransform3D: toValueCA)
+        animation.fromValue = NSValue(caTransform3D: fromValueCA)
+        animation.toValue = NSValue(caTransform3D: toValueCA)
             animation.duration = duration
             
-            secHandLayer.addAnimation(animation, forKey: keyPath)
-            secHandLayer.transform = toValueCA
+        secHandLayer.add(animation, forKey: keyPath)
+        secHandLayer.transform = toValueCA
         #endif
     }
     
     func degreeFromMinutes(minutes: Int) -> CGFloat {
-        return CGFloat(minutes * 6) * CGFloat(M_PI) / 180.0
+        return CGFloat(minutes * 6) * CGFloat.pi / 180.0
     }
     
     func degreeFromHours(hours: Int, minutes: Int) -> CGFloat {
-        return CGFloat(hours * 30 + minutes/2) * CGFloat(M_PI) / 180.0
+        return CGFloat(hours * 30 + minutes/2) * CGFloat.pi / 180.0
     }
     
     //MARK: configure layer
     func setUpLayers() {
         //set origin bg clear color
-        self.backgroundColor = UIColor.clearColor()
+        self.backgroundColor = UIColor.clear
         
         //setUp hourHandLayer
         if let image = hourHandImage {
-            hourHandLayer.frame = layerFrameFromImage(image)
-            hourHandLayer.contents = image.CGImage
-            hourHandLayer.anchorPoint = CGPointMake(0.5, 1.0)
+            hourHandLayer.frame = layerFrameFromImage(image: image)
+            hourHandLayer.contents = image.cgImage
+            hourHandLayer.anchorPoint = CGPoint(x: 0.5, y: 1.0)
             hourHandLayer.position = center
-            let angle: CGFloat = degreeFromHours(hour, minutes: minute)
+            let angle: CGFloat = degreeFromHours(hours: hour, minutes: minute)
             let transform = CATransform3DRotate(CATransform3DIdentity, angle, 0, 0, 1)
             hourHandLayer.transform = transform
-            addShadowToLayer(hourHandLayer)
+            addShadowToLayer(layer: hourHandLayer)
         } else {
-            let hourHandRect = CGRectMake(-hourHandWidth/2, -hourHandLength, hourHandWidth, hourHandLength)
-            let hourCornerRadius = CGRectGetWidth(hourHandRect)/2
+            let hourHandRect = CGRect(x: -hourHandWidth / 2, y: -hourHandLength, width: hourHandWidth, height: hourHandLength)
+            let hourCornerRadius = hourHandRect.width / 2
             let hourPath =  UIBezierPath(roundedRect: hourHandRect, cornerRadius: hourCornerRadius)
-            let hourTransform = CGAffineTransformMakeRotation(degreeFromHours(hour, minutes: minute))
-            hourPath.applyTransform(hourTransform)
-            hourHandLayer.path = hourPath.CGPath
-            hourHandLayer.fillColor = handColor.CGColor
+            let hourTransform = CGAffineTransform(rotationAngle: degreeFromHours(hours: hour, minutes: minute))
+            hourPath.apply(hourTransform)
+            hourHandLayer.path = hourPath.cgPath
+            hourHandLayer.fillColor = handColor.cgColor
             hourHandLayer.position = center
         }
         
         //setUp minHandLayer
         if let image = minHandImage {
-            minHandLayer.frame = layerFrameFromImage(image)
-            minHandLayer.contents = image.CGImage
-            minHandLayer.anchorPoint = CGPointMake(0.5, 1.0)
+            minHandLayer.frame = layerFrameFromImage(image: image)
+            minHandLayer.contents = image.cgImage
+            minHandLayer.anchorPoint = CGPoint(x: 0.5, y: 1.0)
             minHandLayer.position = center
-            let angle: CGFloat = degreeFromMinutes(minute)
+            let angle: CGFloat = degreeFromMinutes(minutes: minute)
             let transform = CATransform3DRotate(CATransform3DIdentity, angle, 0, 0, 1)
             minHandLayer.transform = transform
-            addShadowToLayer(minHandLayer)
+            addShadowToLayer(layer: minHandLayer)
         } else {
-            let minHandRect = CGRectMake(-minHandWidth/2, -minHandLength, minHandWidth, minHandLength)
-            let minCornerRadius = CGRectGetWidth(minHandRect)/2
+            let minHandRect = CGRect(x: -minHandWidth/2, y: -minHandLength, width: minHandWidth, height: minHandLength)
+            let minCornerRadius = minHandRect.width / 2
             let minPath =  UIBezierPath(roundedRect: minHandRect, cornerRadius: minCornerRadius)
-            let minTransform = CGAffineTransformMakeRotation(degreeFromMinutes(minute))
-            minPath.applyTransform(minTransform)
-            minHandLayer.path = minPath.CGPath
-            minHandLayer.fillColor = handColor.CGColor
+            let minTransform = CGAffineTransform(rotationAngle: degreeFromMinutes(minutes: minute))
+            minPath.apply(minTransform)
+            minHandLayer.path = minPath.cgPath
+            minHandLayer.fillColor = handColor.cgColor
             minHandLayer.position = center
         }
         
         //setUp secHandLayer
         if let image = secHandImage {
-            secHandLayer.frame = layerFrameFromImage(image)
-            secHandLayer.contents = image.CGImage
-            secHandLayer.anchorPoint = CGPointMake(0.5, 1.0)
+            secHandLayer.frame = layerFrameFromImage(image: image)
+            secHandLayer.contents = image.cgImage
+            secHandLayer.anchorPoint = CGPoint(x: 0.5, y: 1.0)
             secHandLayer.position = center
-            addShadowToLayer(secHandLayer)
+            addShadowToLayer(layer: secHandLayer)
         } else {
-            let secPath = UIBezierPath(rect: CGRectMake(-secHandWidth/2, -secHandLength, secHandWidth, secHandLength))
-            secHandLayer.path = secPath.CGPath
-            secHandLayer.fillColor = secHandColor.CGColor
+            let secPath = UIBezierPath(rect: CGRect(x: -secHandWidth / 2, y: -secHandLength, width: secHandWidth, height: secHandLength))
+            secHandLayer.path = secPath.cgPath
+            secHandLayer.fillColor = secHandColor.cgColor
             secHandLayer.position = center
         }
         
         //setUp bgCircleLayer
         if let image = bgImage {
-            bgCircleLayer.frame = layerFrameFromImage(image)
-            bgCircleLayer.contents = image.CGImage
+            bgCircleLayer.frame = layerFrameFromImage(image: image)
+            bgCircleLayer.contents = image.cgImage
         }
         
         //setUp centerCircleLayer
         if let image = centerImage {
-            centerCircleLayer.frame = layerFrameFromImage(image)
-            centerCircleLayer.contents = image.CGImage
-            addShadowToLayer(centerCircleLayer)
+            centerCircleLayer.frame = layerFrameFromImage(image: image)
+            centerCircleLayer.contents = image.cgImage
+            addShadowToLayer(layer: centerCircleLayer)
         } else {
             let centerCirclePath = UIBezierPath(arcCenter: circleCenter, radius: circleRadius/25, startAngle: 0, endAngle: CGFloat(2 * M_PI), clockwise: false)
-            centerCircleLayer.path = centerCirclePath.CGPath
-            centerCircleLayer.fillColor = bgColor.CGColor
+            centerCircleLayer.path = centerCirclePath.cgPath
+            centerCircleLayer.fillColor = bgColor.cgColor
             
             centerCircleLayer.lineWidth = bgLineWidth/2
-            centerCircleLayer.strokeColor = handColor.CGColor
+            centerCircleLayer.strokeColor = handColor.cgColor
         }
         
         //add layers
@@ -243,16 +243,16 @@ public class SmileClockView: UIView {
     }
     
     func addShadowToLayer(layer: CALayer) {
-        layer.shadowOffset = CGSizeMake(0.0, 3.0);
-        layer.shadowOpacity = 0.5;
-        layer.shadowColor = UIColor.blackColor().CGColor;
-        layer.shadowRadius = 3.0;
+        layer.shadowOffset = CGSize(width: 0.0, height: 3.0)
+        layer.shadowOpacity = 0.5
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowRadius = 3.0
     }
     
     func layerFrameFromImage(image: UIImage) -> CGRect {
         let width = image.size.width
         let height = image.size.height
-        return CGRectMake(circleCenter.x - width/2, circleCenter.y - height/2, width, height)
+        return CGRect(x: circleCenter.x - width / 2, y: circleCenter.y - height / 2, width: width, height: height)
     }
     
     func clearAllStyle() {
@@ -280,7 +280,7 @@ public class SmileClockView: UIView {
     func updateClockModal1() {
         let radius = graduationRadius()
         for i in 0..<12 {
-            addGraduationLine(radius, i: i, bigType: true)
+            addGraduationLine(radius: radius, i: i, bigType: true)
         }
         self.layer.insertSublayer(graduationLayer_big, above: bgCircleLayer)
     }
@@ -289,7 +289,7 @@ public class SmileClockView: UIView {
         self.updateClockModal1()
         let radius = graduationRadius()
         for i in 0..<60 {
-            addGraduationLine(radius, i: i, bigType: false)
+            addGraduationLine(radius: radius, i: i, bigType: false)
         }
         self.layer.insertSublayer(graduationLayer_small, above: bgCircleLayer)
     }
@@ -298,7 +298,7 @@ public class SmileClockView: UIView {
         updateClockModal2()
         let radius = timeTextRadius()
         for i in 0..<12 {
-            addTimeText(radius, i: i)
+            addTimeText(radius: radius, i: i)
         }
         self.layer.insertSublayer(fontView.layer, below: minHandLayer)
     }
@@ -322,24 +322,24 @@ public class SmileClockView: UIView {
         let denominator = bigType ? 6.0 : 30.0
         let lineLength = bigType ? graduationLineLength : graduationLineLength_small
         let linewidth = bigType ? graduationLineWidth : graduationLineWidth_small
-        let angle = M_PI/denominator * Double(i)
+        let angle = Double.pi / denominator * Double(i)
         let radio: CGFloat = CGFloat(sin(angle))
         let radio1: CGFloat = CGFloat(cos(angle))
         let offset_x = circleCenter.x - circleRadius
         let offset_y = circleCenter.y - circleRadius
         let x: CGFloat = radius + radio * radius + bgLineWidth * graduationScale + offset_x
         let y: CGFloat = radius - radio1 * radius +  bgLineWidth * graduationScale + offset_y
-        let p1 = CGPointMake(0, 0)
-        let p2 = CGPointMake(0, lineLength)
+        let p1 = CGPoint.zero
+        let p2 = CGPoint(x: 0, y: lineLength)
         let path = UIBezierPath()
-        path.moveToPoint(p1)
-        path.addLineToPoint(p2)
+        path.move(to: p1)
+        path.addLine(to: p2)
         let layer = CAShapeLayer()
-        layer.path = path.CGPath
-        layer.position = CGPointMake(x, y)
-        layer.strokeColor = graduationColor.CGColor
+        layer.path = path.cgPath
+        layer.position = CGPoint(x: x, y: y)
+        layer.strokeColor = graduationColor.cgColor
         layer.lineWidth = linewidth
-        layer.lineCap = kCALineCapRound
+        layer.lineCap = CAShapeLayerLineCap.round
         layer.transform = CATransform3DMakeRotation(CGFloat(angle), 0, 0, 1)
         if bigType{
             graduationLayer_big.addSublayer(layer)
@@ -350,7 +350,7 @@ public class SmileClockView: UIView {
     
     func addTimeText(radius: CGFloat, i: Int) {
         let specialText = "12"
-        let angle = M_PI/6.0 * Double(i)
+        let angle = Double.pi / 6.0 * Double(i)
         let radio: CGFloat = CGFloat(sin(angle))
         let radio1: CGFloat = CGFloat(cos(angle))
         let offset_x = circleCenter.x - circleRadius
@@ -358,20 +358,20 @@ public class SmileClockView: UIView {
         let x: CGFloat = radius + radio * radius + bgLineWidth * timeTextScale + offset_x
         let y: CGFloat = radius - radio1 * radius +  bgLineWidth * timeTextScale + offset_y
         let label = UILabel()
-        label.font = UIFont.boldSystemFontOfSize(graduationFontSize)
+        label.font = UIFont.boldSystemFont(ofSize: graduationFontSize)
         label.textColor = fontColor
         label.text = "\(i)"
         if i == 0 {
             label.text = specialText
         }
         label.sizeToFit()
-        let width = CGRectGetWidth(label.bounds)
-        let height = CGRectGetHeight(label.bounds)
+        let width = label.bounds.width
+        let height = label.bounds.height
         if let text = label.text {
-            if text.characters.count > 1 && label.text != specialText {
-                label.frame = CGRectMake(x - width/2.5, y - height/2.5, width, height)
+            if text.count > 1 && label.text != specialText {
+                label.frame = CGRect(x: x - width / 2.5, y: y - height / 2.5, width: width, height: height)
             }else{
-                label.center = CGPointMake(x, y)
+                label.center = CGPoint(x: x, y: y)
             }
         }
         fontView.addSubview(label)
@@ -381,9 +381,9 @@ public class SmileClockView: UIView {
 
 //MARK: Utility
 func DegreesToRadians (value:Double) -> CGFloat {
-    return CGFloat(value * M_PI / 180.0)
+    return CGFloat(value * Double.pi / 180.0)
 }
 
 func RadiansToDegrees (value:Double) -> CGFloat {
-    return CGFloat(value * 180.0 / M_PI)
+    return CGFloat(value * 180.0 / Double.pi)
 }

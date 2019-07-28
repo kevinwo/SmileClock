@@ -16,10 +16,11 @@ Pod::Spec.new do |s|
   s.social_media_url   = "https://dribbble.com/yuchenliu"
 
 
-  s.platform     = :ios, '8.0'
+  s.platform     = :ios, '11.0'
   s.requires_arc = true
   s.source       = { :git => "https://github.com/liu044100/SmileClock.git", :tag => s.version.to_s}
   s.source_files  = 'SmileClock/Classes/*.{swift}'
   s.frameworks = 'UIKit'
+  s.swift_version = '5.0'
 
 end

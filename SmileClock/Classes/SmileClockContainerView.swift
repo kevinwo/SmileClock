@@ -10,11 +10,11 @@ import UIKit
 
 @IBDesignable public class SmileClockContainerView: UIView {
 
-    @IBInspectable public var bgColor: UIColor = UIColor.blackColor()
-    @IBInspectable public var graduationColor: UIColor = UIColor.whiteColor()
-    @IBInspectable public var fontColor: UIColor = UIColor.whiteColor()
-    @IBInspectable public var handColor: UIColor = UIColor.whiteColor()
-    @IBInspectable public var secHandColor: UIColor = UIColor.yellowColor()
+    @IBInspectable public var bgColor: UIColor = .black
+    @IBInspectable public var graduationColor: UIColor = .white
+    @IBInspectable public var fontColor: UIColor = .white
+    @IBInspectable public var handColor: UIColor = .white
+    @IBInspectable public var secHandColor: UIColor = .yellow
     @IBInspectable public var clockStyleNum: Int = 3
     @IBInspectable public var hour: Int = 9
     @IBInspectable public var minute: Int = 30
@@ -29,8 +29,8 @@ import UIKit
     public var clockView: SmileClockView!
     
     #if TARGET_INTERFACE_BUILDER
-    override public func willMoveToSuperview(newSuperview: UIView?) {
-    addClockView()
+    public override func willMove(toSuperview newSuperview: UIView?) {
+        addClockView()
     }
     #else
     override public func awakeFromNib() {
@@ -45,10 +45,10 @@ import UIKit
     }
     
     private func addClockView() {
-        self.backgroundColor = UIColor.clearColor()
+        self.backgroundColor = UIColor.clear
         clockView = SmileClockView(frame: self.bounds)
         
-        clockView.clockStyle = safeSetClockStyle(clockStyleNum)
+        clockView.clockStyle = safeSetClockStyle(styleNum: clockStyleNum)
         clockView.bgColor = bgColor
         clockView.graduationColor = graduationColor
         clockView.handColor = handColor

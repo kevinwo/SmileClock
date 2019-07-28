@@ -25,7 +25,7 @@ class ClockCollectionVC: UICollectionViewController, SmileWorldClockModelDelegat
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        self.collectionView?.collectionViewLayout.shouldInvalidateLayoutForBoundsChange(view.bounds)
+        self.collectionView?.collectionViewLayout.shouldInvalidateLayout(forBoundsChange: view.bounds)
     }
     
     func loadDefaultClockData() {
@@ -33,7 +33,7 @@ class ClockCollectionVC: UICollectionViewController, SmileWorldClockModelDelegat
         for timeID in defaultTimeZones {
             if let timeZone = NSTimeZone(abbreviation: timeID) {
                 let timeZoneData = SmileTimeZoneData(timeZone: timeZone)
-                worldClockModal.addData(timeZoneData)
+                worldClockModal.addData(timeZoneData: timeZoneData)
             }
         }
     }
@@ -48,17 +48,17 @@ class ClockCollectionVC: UICollectionViewController, SmileWorldClockModelDelegat
     }
 
     // MARK: UICollectionViewDataSource
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
 
 
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return worldClockModal.selectedTimeZones.count
     }
 
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! ClockCollectionCell
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ClockCollectionCell
         //Modal
         let currentTimeData = worldClockModal.selectedTimeZones[indexPath.row]
         
@@ -68,10 +68,10 @@ class ClockCollectionVC: UICollectionViewController, SmileWorldClockModelDelegat
         cell.clockContainerView.hour = currentTimeData.hour
         
         //test Customize UI
-        if customizedUI_switch.on {
-            showCustomizedUI(cell, dayTime: currentTimeData.dayTime)
+        if customizedUI_switch.isOn {
+            showCustomizedUI(cell: cell, dayTime: currentTimeData.dayTime)
         } else {
-            removeCustomizedUI(cell, dayTime: currentTimeData.dayTime)
+            removeCustomizedUI(cell: cell, dayTime: currentTimeData.dayTime)
         }
         
         cell.clockContainerView.updateClockView()
@@ -107,15 +107,15 @@ class ClockCollectionVC: UICollectionViewController, SmileWorldClockModelDelegat
         cell.clockContainerView.centerImage = nil
         
         if dayTime {
-            cell.clockContainerView.bgColor = UIColor.groupTableViewBackgroundColor()
-            cell.clockContainerView.handColor = UIColor.blackColor()
-            cell.clockContainerView.fontColor = UIColor.blackColor()
-            cell.clockContainerView.graduationColor = UIColor.blackColor()
+            cell.clockContainerView.bgColor = UIColor.groupTableViewBackground
+            cell.clockContainerView.handColor = UIColor.black
+            cell.clockContainerView.fontColor = UIColor.black
+            cell.clockContainerView.graduationColor = UIColor.black
         } else {
-            cell.clockContainerView.bgColor = UIColor.blackColor()
-            cell.clockContainerView.handColor = UIColor.whiteColor()
-            cell.clockContainerView.fontColor = UIColor.whiteColor()
-            cell.clockContainerView.graduationColor = UIColor.whiteColor()
+            cell.clockContainerView.bgColor = UIColor.black
+            cell.clockContainerView.handColor = UIColor.white
+            cell.clockContainerView.fontColor = UIColor.white
+            cell.clockContainerView.graduationColor = UIColor.white
         }
     }
 

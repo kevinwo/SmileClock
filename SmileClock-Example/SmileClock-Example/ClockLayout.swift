@@ -14,8 +14,8 @@ class ClockLayout: UICollectionViewFlowLayout {
     
     override init() {
         super.init()
-        self.itemSize = CGSizeMake(kItemWidth, kItemWidth + 50.0);
-        self.scrollDirection = .Vertical
+        self.itemSize = CGSize(width: kItemWidth, height: kItemWidth + 50.0);
+        self.scrollDirection = .vertical
         self.sectionInset = updateSectionInset()
     }
 
@@ -23,20 +23,20 @@ class ClockLayout: UICollectionViewFlowLayout {
         super.init()
     }
     
-    override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
+    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         self.sectionInset = updateSectionInset()
         return true
     }
     
     func updateSectionInset() -> UIEdgeInsets {
         guard (self.collectionView != nil) else {
-            return UIEdgeInsetsMake(0, 0, 0, 0)
+            return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         }
         let screenWidth = self.collectionView!.bounds.size.width
         let i: Int = Int(screenWidth/kItemWidth)
         let count: CGFloat = CGFloat(i)
         let space: CGFloat = (screenWidth - count * kItemWidth) / (count+1)
         self.minimumInteritemSpacing = space - 1.0
-        return UIEdgeInsetsMake(0, space, 0, space)
+        return UIEdgeInsets(top: 0, left: space, bottom: 0, right: space)
     }
 }

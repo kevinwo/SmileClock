@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17D1498EEB49A1A12ADC4A4E /* Pods_Smile_Clock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F598E1876D2F581A18C0556 /* Pods_Smile_Clock.framework */; };
 		24487AB71C1E9102005763DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24487AB61C1E9102005763DB /* AppDelegate.swift */; };
 		24487ABC1C1E9102005763DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24487ABA1C1E9102005763DB /* Main.storyboard */; };
 		24487ABE1C1E9102005763DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24487ABD1C1E9102005763DB /* Assets.xcassets */; };
@@ -15,7 +16,6 @@
 		24487ADB1C1E9429005763DB /* ClockCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24487AD71C1E9429005763DB /* ClockCollectionVC.swift */; };
 		24487ADD1C1E9429005763DB /* ClockLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24487AD91C1E9429005763DB /* ClockLayout.swift */; };
 		24487AE51C1E96F0005763DB /* Smile_ClockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24487AE41C1E96F0005763DB /* Smile_ClockTests.swift */; };
-		DB2E2CD656BFF5034FEB0425 /* Pods_Smile_Clock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F84459E1AE52B508683F8D51 /* Pods_Smile_Clock.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F598E1876D2F581A18C0556 /* Pods_Smile_Clock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Smile_Clock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24487AB31C1E9102005763DB /* Smile Clock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smile Clock.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		24487AB61C1E9102005763DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		24487ABB1C1E9102005763DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -41,9 +42,8 @@
 		24487AE21C1E96F0005763DB /* Smile ClockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Smile ClockTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		24487AE41C1E96F0005763DB /* Smile_ClockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Smile_ClockTests.swift; sourceTree = "<group>"; };
 		24487AE61C1E96F0005763DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4930CE84C66C305BFAF2216D /* Pods-Smile Clock.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smile Clock.release.xcconfig"; path = "Pods/Target Support Files/Pods-Smile Clock/Pods-Smile Clock.release.xcconfig"; sourceTree = "<group>"; };
-		D3643045B83726A8C52C749F /* Pods-Smile Clock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smile Clock.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Smile Clock/Pods-Smile Clock.debug.xcconfig"; sourceTree = "<group>"; };
-		F84459E1AE52B508683F8D51 /* Pods_Smile_Clock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Smile_Clock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		244947D51A2D38073B4C54D6 /* Pods-Smile Clock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smile Clock.debug.xcconfig"; path = "Target Support Files/Pods-Smile Clock/Pods-Smile Clock.debug.xcconfig"; sourceTree = "<group>"; };
+		EB14B606314E9C12D57FA3A0 /* Pods-Smile Clock.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smile Clock.release.xcconfig"; path = "Target Support Files/Pods-Smile Clock/Pods-Smile Clock.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB2E2CD656BFF5034FEB0425 /* Pods_Smile_Clock.framework in Frameworks */,
+				17D1498EEB49A1A12ADC4A4E /* Pods_Smile_Clock.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,22 +65,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		13D7EE8C3FD2F019173DFD86 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				F84459E1AE52B508683F8D51 /* Pods_Smile_Clock.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		24487AAA1C1E9102005763DB = {
 			isa = PBXGroup;
 			children = (
 				24487AB51C1E9102005763DB /* SmileClock-Example */,
 				24487AE31C1E96F0005763DB /* Smile ClockTests */,
 				24487AB41C1E9102005763DB /* Products */,
-				EED6483F32E3E8E5F45A2EE8 /* Pods */,
-				13D7EE8C3FD2F019173DFD86 /* Frameworks */,
+				975576252A6FA64E69273383 /* Pods */,
+				78D2C6A52D4F07803CF037EF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -117,13 +109,21 @@
 			path = "Smile ClockTests";
 			sourceTree = "<group>";
 		};
-		EED6483F32E3E8E5F45A2EE8 /* Pods */ = {
+		78D2C6A52D4F07803CF037EF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D3643045B83726A8C52C749F /* Pods-Smile Clock.debug.xcconfig */,
-				4930CE84C66C305BFAF2216D /* Pods-Smile Clock.release.xcconfig */,
+				1F598E1876D2F581A18C0556 /* Pods_Smile_Clock.framework */,
 			);
-			name = Pods;
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		975576252A6FA64E69273383 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				244947D51A2D38073B4C54D6 /* Pods-Smile Clock.debug.xcconfig */,
+				EB14B606314E9C12D57FA3A0 /* Pods-Smile Clock.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,12 +133,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 24487AD01C1E9102005763DB /* Build configuration list for PBXNativeTarget "Smile Clock" */;
 			buildPhases = (
-				D5D1257DE4FF285FFA04633F /* Check Pods Manifest.lock */,
+				2DB35A2A3D258DD16AFAA9FD /* [CP] Check Pods Manifest.lock */,
 				24487AAF1C1E9102005763DB /* Sources */,
 				24487AB01C1E9102005763DB /* Frameworks */,
 				24487AB11C1E9102005763DB /* Resources */,
-				0C1462962A8CAA50C8368E73 /* Embed Pods Frameworks */,
-				81405FD70BFF445CE5C6B072 /* Copy Pods Resources */,
+				028EBCE7BF29C71F6BD53749 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -191,6 +190,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -226,49 +226,44 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0C1462962A8CAA50C8368E73 /* Embed Pods Frameworks */ = {
+		028EBCE7BF29C71F6BD53749 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Smile Clock/Pods-Smile Clock-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SmileClock/SmileClock.framework",
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SmileClock.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Smile Clock/Pods-Smile Clock-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Smile Clock/Pods-Smile Clock-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		81405FD70BFF445CE5C6B072 /* Copy Pods Resources */ = {
+		2DB35A2A3D258DD16AFAA9FD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
+			inputFileListPaths = (
 			);
-			name = "Copy Pods Resources";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Smile Clock-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Smile Clock/Pods-Smile Clock-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D5D1257DE4FF285FFA04633F /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -408,27 +403,29 @@
 		};
 		24487AD11C1E9102005763DB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D3643045B83726A8C52C749F /* Pods-Smile Clock.debug.xcconfig */;
+			baseConfigurationReference = 244947D51A2D38073B4C54D6 /* Pods-Smile Clock.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "SmileClock-Example/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.self.SmileClock-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		24487AD21C1E9102005763DB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4930CE84C66C305BFAF2216D /* Pods-Smile Clock.release.xcconfig */;
+			baseConfigurationReference = EB14B606314E9C12D57FA3A0 /* Pods-Smile Clock.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "SmileClock-Example/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.self.SmileClock-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -484,6 +481,7 @@
 				24487AEB1C1E96F0005763DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
